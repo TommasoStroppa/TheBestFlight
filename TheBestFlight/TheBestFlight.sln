@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBestFlight", "TheBestFlight\TheBestFlight.csproj", "{AFBB1064-5545-4D67-8B4A-43C3D45C4608}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{D385772A-5770-4CAD-93BB-349E3DA68C8C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AFBB1064-5545-4D67-8B4A-43C3D45C4608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFBB1064-5545-4D67-8B4A-43C3D45C4608}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFBB1064-5545-4D67-8B4A-43C3D45C4608}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFBB1064-5545-4D67-8B4A-43C3D45C4608}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D385772A-5770-4CAD-93BB-349E3DA68C8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D385772A-5770-4CAD-93BB-349E3DA68C8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D385772A-5770-4CAD-93BB-349E3DA68C8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D385772A-5770-4CAD-93BB-349E3DA68C8C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E649D59-9B1E-40D2-A563-BAB8AE9F8E70}
+	EndGlobalSection
+EndGlobal
