@@ -1,4 +1,5 @@
 ﻿using API.Functions;
+using API.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace API.Controllers
         [HttpGet("ExtractCheapestFlights/{departure}")]
         public async Task<List<string>> ExtractCheapestFlights(string departure)
         {
-            List<string> eleString = await scrapingRepository.ExtractCheapestFlights(departure);
+            RootCheapestFlights eleString = await scrapingRepository.ExtractCheapestFlights(departure);
             return null;
         }
     }

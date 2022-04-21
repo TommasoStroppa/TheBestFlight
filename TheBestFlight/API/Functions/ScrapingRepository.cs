@@ -10,8 +10,9 @@ namespace API.Functions
 {
     public class ScrapingRepository : IScrapingRepository
     {
-        public async Task<List<string>> ExtractCheapestFlights(string departure)
+        public async Task<RootCheapestFlights> ExtractCheapestFlights(string departure)
         {
+			RootCheapestFlights root;
 			var client = new HttpClient();
 			var request = new HttpRequestMessage
 			{
@@ -28,8 +29,13 @@ namespace API.Functions
 			{
 				response.EnsureSuccessStatusCode();
 				var body = await response.Content.ReadAsStringAsync();
-				List<List<CheapestFlights>> aaaa = JsonConvert.DeserializeObject<List<List<CheapestFlights>>>(body);
+				root = JsonConvert.DeserializeObject<RootCheapestFlights>(body);
 			}
+			string data = root.data.ToString();
+			Dictionary<string, object> responses = JsonConvert.DeserializeObject<Dictionary<string, object>>(data);
+			List<object> a = responses.Values.ToList();
+			string json = JsonConvert.SerializeObject(a);
+			var responsesB = JsonConvert.DeserializeObject<List<Dictionary<int, object>>>(json);
 			return null;
 		}
     }

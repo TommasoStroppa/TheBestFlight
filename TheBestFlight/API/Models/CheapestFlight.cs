@@ -5,7 +5,13 @@ using System.Threading.Tasks;
 
 namespace API.Models
 {
-    public class CheapestFlights
+    public class RootCheapestFlights
+    {
+        public bool success { get; set; }
+        public object data { get; set; }
+        public string currency { get; set; }
+    }
+    public class CheapestFlight
     {
         public int price { get; set; }
         public string airline { get; set; }
