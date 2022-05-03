@@ -18,10 +18,16 @@ namespace API.Controllers
             this.scrapingRepository = scrapingRepository;
         }
         [HttpGet("ExtractCheapestFlights/{departure}")]
-        public async Task<List<string>> ExtractCheapestFlights(string departure)
+        public async Task<List<CheapestDestination>> ExtractCheapestFlights(string departure)
         {
-            RootCheapestFlights eleString = await scrapingRepository.ExtractCheapestFlights(departure);
-            return null;
+            List<CheapestDestination> eleDestinazioni = await scrapingRepository.ExtractCheapestFlights(departure);
+            return eleDestinazioni;
+        }
+        [HttpGet("ExtractAirlineInfo/{iata}")]
+        public async Task<Airline> ExtractAirlineInfo(string iata)
+        {
+            Airline airline = await scrapingRepository.ExtractAirlineInfo(iata);
+            return airline;
         }
     }
 }

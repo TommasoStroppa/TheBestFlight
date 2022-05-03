@@ -8,6 +8,7 @@ namespace API.Functions
 {
     public interface IScrapingRepository
     {
-        Task<RootCheapestFlights> ExtractCheapestFlights(string departure);
+        Task<List<CheapestDestination>> ExtractCheapestFlights(string departure);
+        Task<Airline> ExtractAirlineInfo(string iata);
     }
 }

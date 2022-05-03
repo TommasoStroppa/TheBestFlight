@@ -11,6 +11,11 @@ namespace API.Models
         public object data { get; set; }
         public string currency { get; set; }
     }
+    public class CheapestDestination
+    {
+        public string destination { get; set; }
+        public List<CheapestFlight> cheapestFlights { get; set; }
+    }
     public class CheapestFlight
     {
         public int price { get; set; }
