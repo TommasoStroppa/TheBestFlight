@@ -1,6 +1,7 @@
 ﻿using API.Functions;
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,10 +25,16 @@ namespace API.Controllers
             return eleDestinazioni;
         }
         [HttpGet("ExtractAirlineInfo/{iata}")]
-        public async Task<Airline> ExtractAirlineInfo(string iata)
+        public async Task<List<Airline>> ExtractAirlineInfo(string iata)
         {
-            Airline airline = await scrapingRepository.ExtractAirlineInfo(iata);
-            return airline;
+            List<Airline> airlines = await scrapingRepository.ExtractAirlineInfo(iata);
+            return airlines;
+        }
+        [HttpGet("SearchAirports/{keyword}")]
+        public async Task<Airports> SearchAirports(string keyword)
+        {
+            Airports airports = await scrapingRepository.SearchAirports(keyword);            
+            return airports;
         }
     }
 }

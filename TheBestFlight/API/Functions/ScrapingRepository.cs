@@ -10,9 +10,9 @@ namespace API.Functions
 {
     public class ScrapingRepository : IScrapingRepository
     {
-        public async Task<List<CheapestDestination>> ExtractCheapestFlights(string departure)
-        {
-			List<CheapestDestination> eleDestinazioni = new List<CheapestDestination>(); 
+		public async Task<List<CheapestDestination>> ExtractCheapestFlights(string departure)
+		{
+			List<CheapestDestination> eleDestinazioni = new List<CheapestDestination>();
 			RootCheapestFlights root;
 			var client = new HttpClient();
 			var request = new HttpRequestMessage
@@ -34,28 +34,28 @@ namespace API.Functions
 			}
 			string data = root.data.ToString();
 
-			Dictionary<string, object> responses = JsonConvert.DeserializeObject<Dictionary<string, object>>(data);			
+			Dictionary<string, object> responses = JsonConvert.DeserializeObject<Dictionary<string, object>>(data);
 			foreach (var item in responses)
-            {
+			{
 				CheapestDestination dest = new CheapestDestination();
 				List<CheapestFlight> eleVoli = new List<CheapestFlight>();
 				dest.destination = item.Key;
-				
+
 				string json = JsonConvert.SerializeObject(item.Value);
 				var responsesB = JsonConvert.DeserializeObject<Dictionary<int, object>>(json);
-				foreach(var itemB in responsesB)
-                {
+				foreach (var itemB in responsesB)
+				{
 					string JsonVolo = JsonConvert.SerializeObject(itemB.Value);
 					CheapestFlight volo = JsonConvert.DeserializeObject<CheapestFlight>(JsonVolo);
 					eleVoli.Add(volo);
-                }
+				}
 				dest.cheapestFlights = eleVoli;
 				eleDestinazioni.Add(dest);
 			}
 			return eleDestinazioni;
 		}
-		public async Task<Airline> ExtractAirlineInfo(string iata)
-        {
+		public async Task<List<Airline>> ExtractAirlineInfo(string iata)
+		{
 			var client = new HttpClient();
 			var request = new HttpRequestMessage
 			{
@@ -71,9 +71,30 @@ namespace API.Functions
 			{
 				response.EnsureSuccessStatusCode();
 				var body = await response.Content.ReadAsStringAsync();
-				var result = JsonConvert.DeserializeObject<Airline>(body);
+				var result = JsonConvert.DeserializeObject<List<Airline>>(body);
 				return result;
 			}
+		}
+		public async Task<Airports> SearchAirports(string keyword)
+		{
+			var client = new HttpClient();
+			var request = new HttpRequestMessage
+			{
+				Method = HttpMethod.Get,
+				RequestUri = new Uri($"https://world-airports-directory.p.rapidapi.com/v1/airports/{keyword}?page=1&limit=20&sortBy=AirportName%3Aasc"),
+				Headers =
+				{
+					{ "X-RapidAPI-Host", "world-airports-directory.p.rapidapi.com" },
+					{ "X-RapidAPI-Key", "9ac54eedcemsh016f73ee6669031p11a70bjsn974be6947107" },
+				},
+			};
+			using (var response = await client.SendAsync(request))
+			{
+				response.EnsureSuccessStatusCode();
+				var body = await response.Content.ReadAsStringAsync();
+				var result = JsonConvert.DeserializeObject<Airports>(body);
+				return result;
+			}			
 		}
 	}
 }
