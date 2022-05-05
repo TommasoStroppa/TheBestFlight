@@ -11,6 +11,18 @@
           "lib/netstandard2.0/Humanizer.dll": {}
         }
       },
+      "Microsoft.AspNetCore.Authentication.Google/5.0.16": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.Authentication.Google.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.Authentication.Google.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.AspNetCore.Cryptography.Internal/5.0.3": {
         "type": "package",
         "compile": {
@@ -1670,6 +1682,21 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "Microsoft.AspNetCore.Authentication.Google/5.0.16": {
+      "sha512": "AEvg/Rxq9LFSRcOEINhxriUWzOWoUEJEl/AwfQdgfB9BHOtuAT6EDGEza0tcHkHS0A2MM+AakiSP294m59tYWA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authentication.google/5.0.16",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net5.0/Microsoft.AspNetCore.Authentication.Google.dll",
+        "lib/net5.0/Microsoft.AspNetCore.Authentication.Google.xml",
+        "microsoft.aspnetcore.authentication.google.5.0.16.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.google.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Cryptography.Internal/5.0.3": {
@@ -6097,6 +6124,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "Microsoft.AspNetCore.Authentication.Google >= 5.0.16",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 5.0.3",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.3",
       "Microsoft.AspNetCore.Identity.UI >= 5.0.3",
@@ -6105,7 +6133,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\stroppa.17218\\.nuget\\packages\\": {}
+    "C:\\Users\\stroppa.17218\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -6116,6 +6145,9 @@
       "packagesPath": "C:\\Users\\stroppa.17218\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\stroppa.17218\\Documents\\GitHub\\TheBestFlight\\TheBestFlight\\TheBestFlight\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\stroppa.17218\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -6143,6 +6175,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Google": {
+            "target": "Package",
+            "version": "[5.0.16, )"
+          },
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",
             "version": "[5.0.3, )"
@@ -6182,7 +6218,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.104\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }

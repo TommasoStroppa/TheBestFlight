@@ -167,4 +167,5 @@ C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\obj\Debug\ne
 C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\obj\Debug\net5.0\ref\TheBestFlight.dll
 C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\obj\Debug\net5.0\TheBestFlight.pdb
 C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\obj\Debug\net5.0\TheBestFlight.genruntimeconfig.cache
-C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\TheBestFlight\obj\Debug\net5.0\TheBestFlight.csproj.AssemblyReference.cache
+C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\TheBestFlight\obj\Debug\net5.0\TheBestFlight.csprojAssemblyReference.cache
+C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\TheBestFlight\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.Google.dll

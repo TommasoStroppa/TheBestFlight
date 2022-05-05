@@ -56,5 +56,5 @@ C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\API\obj\Debug\net5.0\API.d
 C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\API\obj\Debug\net5.0\ref\API.dll
 C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\API\obj\Debug\net5.0\API.pdb
 C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\API\obj\Debug\net5.0\API.genruntimeconfig.cache
-C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\API\bin\Debug\net5.0\API.StaticWebAssets.xml
-C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\API\obj\Debug\net5.0\API.csproj.AssemblyReference.cache
+C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\API\obj\Debug\net5.0\API.csprojAssemblyReference.cache
+C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\API\obj\Debug\net5.0\staticwebassets\API.StaticWebAssets.xml
