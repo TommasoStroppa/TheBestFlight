@@ -36,5 +36,11 @@ namespace API.Controllers
             Airports airports = await scrapingRepository.SearchAirports(keyword);            
             return airports;
         }
+        [HttpGet("TranslateString/{text}")]
+        public async Task<string> TranslateString(string text)
+        {
+            string traduzione = await scrapingRepository.TranslateString(text);
+            return traduzione;
+        }
     }
 }

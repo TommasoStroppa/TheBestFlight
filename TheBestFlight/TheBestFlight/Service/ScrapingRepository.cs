@@ -27,5 +27,9 @@ namespace TheBestFlight.Service
         {
             return await httpClient.GetFromJsonAsync<Airports>(@$"Scraping/SearchAirports/{keyword}");
         }
+        public async Task<string> TranslateString(string text)
+        {
+            return await httpClient.GetStringAsync(@$"Scraping/TranslateString/{text}");
+        }
     }
 }

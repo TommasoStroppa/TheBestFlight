@@ -1,0 +1,22 @@
+﻿@page
+@model TheBestFlight.Pages.AeroportoModel
+@{
+    ViewData["Title"] = "Aeroporto";
+}
+<div class="text-center">
+    <form method="post">
+        <h1 class="display-4">Selezionare l'aeroporto di partenza</h1>
+        <select asp-for="@Model.aeroporto" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            @foreach (var item in Model.eleAeroporti)
+            {
+                <option>
+                    @item.AirportName.ToString() - @item.country - @item.AirportCode.ToString()
+                </option>
+            }
+        </select>
+        <br />
+        <br />
+        <input type="submit" class="btn btn-primary" />
+    </form>
+</div>
+

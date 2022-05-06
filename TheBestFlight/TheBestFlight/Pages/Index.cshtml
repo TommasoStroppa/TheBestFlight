@@ -5,6 +5,9 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <form method="post">
+        <h1 class="display-4">Inserisci la tua Città di partenza</h1>
+        <input asp-for="citta" />
+        <input type="submit" class="btn btn-primary" />
+    </form>          
 </div>

@@ -1,0 +1,21 @@
+﻿@page
+@model TheBestFlight.Pages.VoliModel
+@{
+    ViewData["Title"] = "Voli";
+}
+<div class="text-center">
+    @foreach (var dest in Model.eleDestinazioni)
+    {
+        <div class="btn-group">
+            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                @dest.destination
+            </button>
+            <div class="dropdown-menu">
+                @foreach (var flight in dest.cheapestFlights)
+                {
+                    <a class="dropdown-item" href="#">@flight.price</a>
+                }
+            </div>
+        </div>
+    }
+</div>

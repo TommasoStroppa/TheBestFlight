@@ -96,5 +96,32 @@ namespace API.Functions
 				return result;
 			}			
 		}
+		public async Task<string> TranslateString(string text)
+        {
+			var client = new HttpClient();
+			var request = new HttpRequestMessage
+			{
+				Method = HttpMethod.Post,
+				RequestUri = new Uri("https://google-translate1.p.rapidapi.com/language/translate/v2"),
+				Headers =
+				{
+					{ "X-RapidAPI-Host", "google-translate1.p.rapidapi.com" },
+					{ "X-RapidAPI-Key", "3d0684d35amsh068100b881d194cp1cd704jsn90bc3c996d91" },
+				},
+				Content = new FormUrlEncodedContent(new Dictionary<string, string>
+				{
+					{ "q", $"{text}" },
+					{ "target", "en" },
+					{ "source", "it" },
+				}),
+			};
+			using (var response = await client.SendAsync(request))
+			{
+				response.EnsureSuccessStatusCode();
+				var body = await response.Content.ReadAsStringAsync();
+				var result = JsonConvert.DeserializeObject<Translate>(body).data.translations.First().translatedText;
+				return result;
+			}
+		}
 	}
 }
