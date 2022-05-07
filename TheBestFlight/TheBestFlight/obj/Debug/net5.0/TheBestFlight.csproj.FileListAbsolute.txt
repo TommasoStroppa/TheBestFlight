@@ -68,7 +68,6 @@ C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\TheBestFligh
 C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\TheBestFlight\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\TheBestFlight\obj\Debug\net5.0\Razor\Pages\Error.cshtml.g.cs
 C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\TheBestFlight\obj\Debug\net5.0\Razor\Pages\Index.cshtml.g.cs
-C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\TheBestFlight\obj\Debug\net5.0\Razor\Pages\Privacy.cshtml.g.cs
 C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\TheBestFlight\obj\Debug\net5.0\Razor\Pages\Shared\_Layout.cshtml.g.cs
 C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\TheBestFlight\obj\Debug\net5.0\Razor\Pages\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\TheBestFlight\obj\Debug\net5.0\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -256,3 +255,5 @@ C:\Users\utente\Documents\GitHub\TheBestFlight\TheBestFlight\TheBestFlight\obj\D
 C:\Users\utente\Documents\GitHub\TheBestFlight\TheBestFlight\TheBestFlight\obj\Debug\net5.0\TheBestFlight.genruntimeconfig.cache
 C:\Users\utente\Documents\GitHub\TheBestFlight\TheBestFlight\TheBestFlight\obj\Debug\net5.0\Razor\Pages\Aeroporto.cshtml.g.cs
 C:\Users\utente\Documents\GitHub\TheBestFlight\TheBestFlight\TheBestFlight\obj\Debug\net5.0\Razor\Pages\Voli.cshtml.g.cs
+C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\TheBestFlight\obj\Debug\net5.0\Razor\Pages\Aeroporto.cshtml.g.cs
+C:\Users\stroppa.17218\Documents\GitHub\TheBestFlight\TheBestFlight\TheBestFlight\obj\Debug\net5.0\Razor\Pages\Voli.cshtml.g.cs

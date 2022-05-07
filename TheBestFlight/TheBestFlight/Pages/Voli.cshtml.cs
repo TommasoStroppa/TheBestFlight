@@ -27,6 +27,8 @@ namespace TheBestFlight.Pages
         public string codiceAeroporto { get; set; }
         [BindProperty]
         public List<CheapestDestination> eleDestinazioni { get; set; }
+        [BindProperty]
+        public List<CheapestDestination> eleOrdinato { get; set; }
         public async Task<IActionResult> OnGetAsync(string? codiceAeroporto)
         {
             if (codiceAeroporto == null)
@@ -35,6 +37,24 @@ namespace TheBestFlight.Pages
             }
 
             eleDestinazioni = await scrapingRepository.ExtractCheapestFlights(codiceAeroporto);
+            foreach(var item in eleDestinazioni)
+            {
+                int priceMinItem = item.cheapestFlights.Min(p => p.price);
+                int priceMin = 1000;
+                foreach (var min in eleOrdinato)
+                {
+                    int minimo = min.cheapestFlights.Min(p => p.price);
+                    if (minimo<priceMin)
+                    {
+                        priceMin = minimo;
+                    }                    
+                }
+                if (priceMin != 0 && priceMin > priceMinItem)
+                {
+                    eleOrdinato.Insert(0, item);
+                }                
+            }
+            //eleOrdinato = eleDestinazioni.OrderBy(p => p.cheapestFlights.ToList() == p.cheapestFlights.OrderByDescending(p => p.price).ToList()).ToList();
 
             if (eleDestinazioni.Count == 0)
             {
