@@ -4,18 +4,24 @@
     ViewData["Title"] = "Voli";
 }
 <div class="text-center">
-    @foreach (var dest in Model.eleOrdinato)
+    @foreach (var dest in Model.eleDestinazioni)
     {
-        <div class="btn-group">
-            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                @dest.destination
+        <div class="btn-group" style="width: 100%;">
+            <button class="btn btn-light btn-lg dropdown-toggle" style="width:auto" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                @dest.destination - @dest.cheapestFlights[0].price €
             </button>
-            <div class="dropdown-menu">
-                @foreach (var flight in dest.cheapestFlights)
-                {
-                    <a class="dropdown-item" href="#">@flight.price</a>
-                }
-            </div>
+            <form method="post">
+                <div class="dropdown-menu">
+                    @foreach (var flight in dest.cheapestFlights)
+                    {
+                        <a class="dropdown-item" href="#">@flight.price</a>
+                        <input name="eleDestinazioni" type="hidden" value="@Model.eleDestinazioni" />
+                        <input name="voloscelto" type="hidden" value="@flight" />
+                        <input class="btn btn-primary" type="submit" value="cerca" />
+                    }
+                </div>
+            </form>            
         </div>
+        <br />
     }
 </div>

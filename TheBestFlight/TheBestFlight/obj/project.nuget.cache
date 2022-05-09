@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RYfjgTXqMc2K4FblaAOsXT3vWHhijkEjMeGMi37tgomDdHVMrC94JJ+36WKtLtXewYZBAsZpqO0kKBFJ5zv3fQ==",
+  "dgSpecHash": "HDuDCWioKFlo14xeqh7wtZM6XDGT3ULf0+KBJZpkVrDjgn3wjL5LV5hRiq8FrCEQywcl3e1uqnP395mrK9E0QA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\stroppa.17218\\Documents\\GitHub\\TheBestFlight\\TheBestFlight\\TheBestFlight\\TheBestFlight.csproj",
+  "projectFilePath": "C:\\Users\\stroppa.17218\\Documents\\GitHub\\TheBestFlight\\TheBestFlight\\TheBestFlight.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\stroppa.17218\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\stroppa.17218\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\5.0.16\\microsoft.aspnetcore.authentication.google.5.0.16.nupkg.sha512",
@@ -90,7 +90,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.runtime.interopservices\\4.3.0\\system.runtime.interopservices.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.runtime.numerics\\4.3.0\\system.runtime.numerics.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.runtime.serialization.formatters\\4.3.0\\system.runtime.serialization.formatters.4.3.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.runtime.serialization.json\\4.3.0\\system.runtime.serialization.json.4.3.0.nupkg.sha512",
+    "C:\\Users\\stroppa.17218\\.nuget\\packages\\system.runtime.serialization.json\\4.3.0\\system.runtime.serialization.json.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.runtime.serialization.primitives\\4.3.0\\system.runtime.serialization.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\stroppa.17218\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512",

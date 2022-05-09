@@ -28,7 +28,8 @@ namespace TheBestFlight.Pages
         [BindProperty]
         public List<CheapestDestination> eleDestinazioni { get; set; }
         [BindProperty]
-        public List<CheapestDestination> eleOrdinato { get; set; }
+        public CheapestFlight voloscelto { get; set; }
+        public CheapestFlight volo { get; set; }
         public async Task<IActionResult> OnGetAsync(string? codiceAeroporto)
         {
             if (codiceAeroporto == null)
@@ -37,25 +38,15 @@ namespace TheBestFlight.Pages
             }
 
             eleDestinazioni = await scrapingRepository.ExtractCheapestFlights(codiceAeroporto);
-            foreach(var item in eleDestinazioni)
+            int min = 0;
+            List<int> minimi = new List<int>();
+            int num = eleDestinazioni.Count;
+            for (int i = 0; i < num; i++)
             {
-                int priceMinItem = item.cheapestFlights.Min(p => p.price);
-                int priceMin = 1000;
-                foreach (var min in eleOrdinato)
-                {
-                    int minimo = min.cheapestFlights.Min(p => p.price);
-                    if (minimo<priceMin)
-                    {
-                        priceMin = minimo;
-                    }                    
-                }
-                if (priceMin != 0 && priceMin > priceMinItem)
-                {
-                    eleOrdinato.Insert(0, item);
-                }                
+                eleDestinazioni[i].cheapestFlights = eleDestinazioni[i].cheapestFlights.OrderBy(a => a.price).ToList();
             }
-            //eleOrdinato = eleDestinazioni.OrderBy(p => p.cheapestFlights.ToList() == p.cheapestFlights.OrderByDescending(p => p.price).ToList()).ToList();
-
+            eleDestinazioni = eleDestinazioni.OrderBy(a => a.cheapestFlights[0].price).ToList();
+            
             if (eleDestinazioni.Count == 0)
             {
                 return NotFound();
@@ -63,8 +54,9 @@ namespace TheBestFlight.Pages
 
             return Page();
         }
-        //public async Task<IActionResult> OnPostAsync(string? aeroporto)
-        //{
-        //}
+        public async Task<IActionResult> OnPostAsync(CheapestFlight voloscelto)
+        {
+            return Page();
+        }
     }
 }
