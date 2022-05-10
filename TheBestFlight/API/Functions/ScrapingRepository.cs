@@ -54,6 +54,50 @@ namespace API.Functions
 			}
 			return eleDestinazioni;
 		}
+		public async Task<List<CheapestDestination>> ExtractCheapestFlightsArrival(string departure, string arrival)
+		{
+			List<CheapestDestination> eleDestinazioni = new List<CheapestDestination>();
+			RootCheapestFlights root;
+			var client = new HttpClient();
+			var request = new HttpRequestMessage
+			{
+				Method = HttpMethod.Get,
+				RequestUri = new Uri($"https://travelpayouts-travelpayouts-flight-data-v1.p.rapidapi.com/v1/prices/cheap?origin={departure}&page=None&currency=EUR&destination={arrival}"),
+				Headers =
+				{
+					{ "X-Access-Token", "f5df6fdc01b72e0264151f1f0915cd87" },
+					{ "X-RapidAPI-Host", "travelpayouts-travelpayouts-flight-data-v1.p.rapidapi.com" },
+					{ "X-RapidAPI-Key", "9ac54eedcemsh016f73ee6669031p11a70bjsn974be6947107" },
+				},
+			};
+			using (var response = await client.SendAsync(request))
+			{
+				response.EnsureSuccessStatusCode();
+				var body = await response.Content.ReadAsStringAsync();
+				root = JsonConvert.DeserializeObject<RootCheapestFlights>(body);
+			}
+			string data = root.data.ToString();
+
+			Dictionary<string, object> responses = JsonConvert.DeserializeObject<Dictionary<string, object>>(data);
+			foreach (var item in responses)
+			{
+				CheapestDestination dest = new CheapestDestination();
+				List<CheapestFlight> eleVoli = new List<CheapestFlight>();
+				dest.destination = item.Key;
+
+				string json = JsonConvert.SerializeObject(item.Value);
+				var responsesB = JsonConvert.DeserializeObject<Dictionary<int, object>>(json);
+				foreach (var itemB in responsesB)
+				{
+					string JsonVolo = JsonConvert.SerializeObject(itemB.Value);
+					CheapestFlight volo = JsonConvert.DeserializeObject<CheapestFlight>(JsonVolo);
+					eleVoli.Add(volo);
+				}
+				dest.cheapestFlights = eleVoli;
+				eleDestinazioni.Add(dest);
+			}
+			return eleDestinazioni;
+		}
 		public async Task<List<Airline>> ExtractAirlineInfo(string iata)
 		{
 			var client = new HttpClient();
@@ -123,5 +167,34 @@ namespace API.Functions
 				return result;
 			}
 		}
+		public async Task<AirportName> AirportName(string code)
+		{
+			var client = new HttpClient();
+			var request = new HttpRequestMessage
+			{
+				Method = HttpMethod.Get,
+				RequestUri = new Uri($"https://aviation-reference-data.p.rapidapi.com/airports/{code}"),
+				Headers =
+				{
+					{ "X-RapidAPI-Host", "aviation-reference-data.p.rapidapi.com" },
+					{ "X-RapidAPI-Key", "9ac54eedcemsh016f73ee6669031p11a70bjsn974be6947107" },
+				},
+			};
+			using (var response = await client.SendAsync(request))
+			{
+                try
+                {
+					response.EnsureSuccessStatusCode();
+					var body = await response.Content.ReadAsStringAsync();
+					var result = JsonConvert.DeserializeObject<AirportName>(body);
+					return result;
+				}
+				catch
+                {
+					AirportName aeroporto = new AirportName();
+					return aeroporto;
+                }
+			}
+		}        
 	}
 }

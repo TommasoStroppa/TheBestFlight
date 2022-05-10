@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TheBestFlight.Models;
 
 namespace TheBestFlight.Data
 {
@@ -12,5 +13,7 @@ namespace TheBestFlight.Data
         {
 
         }
+        public DbSet<Tratta> eleTratte { get; set; }
+        public DbSet<Associazione> eleAssociazioni { get; set; }
     }
 }

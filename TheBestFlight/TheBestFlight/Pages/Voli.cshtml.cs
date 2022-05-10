@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using TheBestFlight.Data;
 using TheBestFlight.Models;
 using TheBestFlight.Service;
+using Newtonsoft;
 
 namespace TheBestFlight.Pages
 {
@@ -27,17 +28,22 @@ namespace TheBestFlight.Pages
         public string codiceAeroporto { get; set; }
         [BindProperty]
         public List<CheapestDestination> eleDestinazioni { get; set; }
+        public List<AirportName> eleNomi { get; set; }
         [BindProperty]
-        public CheapestFlight voloscelto { get; set; }
         public CheapestFlight volo { get; set; }
+        [BindProperty]
+        public Tratta tratta { get; set; }
         public async Task<IActionResult> OnGetAsync(string? codiceAeroporto)
         {
+            eleNomi = new List<AirportName>();
             if (codiceAeroporto == null)
             {
                 return NotFound();
             }
 
-            eleDestinazioni = await scrapingRepository.ExtractCheapestFlights(codiceAeroporto);
+            this.codiceAeroporto = codiceAeroporto;
+            eleDestinazioni = await scrapingRepository.ExtractCheapestFlights(codiceAeroporto);            
+            
             int min = 0;
             List<int> minimi = new List<int>();
             int num = eleDestinazioni.Count;
@@ -46,16 +52,17 @@ namespace TheBestFlight.Pages
                 eleDestinazioni[i].cheapestFlights = eleDestinazioni[i].cheapestFlights.OrderBy(a => a.price).ToList();
             }
             eleDestinazioni = eleDestinazioni.OrderBy(a => a.cheapestFlights[0].price).ToList();
-            
+
+            foreach (var item in eleDestinazioni)
+            {
+                eleNomi.Add(await scrapingRepository.AirportName(item.destination));
+            }
+
             if (eleDestinazioni.Count == 0)
             {
                 return NotFound();
             }
 
-            return Page();
-        }
-        public async Task<IActionResult> OnPostAsync(CheapestFlight voloscelto)
-        {
             return Page();
         }
     }

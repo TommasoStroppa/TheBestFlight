@@ -2,26 +2,84 @@
 @model TheBestFlight.Pages.VoliModel
 @{
     ViewData["Title"] = "Voli";
+    int i = 0;
+    int a = 0;
 }
-<div class="text-center">
-    @foreach (var dest in Model.eleDestinazioni)
-    {
+
+
+
+
+@*<div class="text-center">
+        @foreach (var dest in Model.eleDestinazioni)
+        {
+            <div class="btn-group" style="width: 100%;">
+                <button class="btn btn-light btn-lg dropdown-toggle" style="width:auto" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @dest.destination - @Model.eleNomi.Where(p => p.iataCode == dest.destination).FirstOrDefault()?.name - @Model.eleNomi.Where(p => p.iataCode == dest.destination).FirstOrDefault()?.alpha2countryCode - @dest.cheapestFlights[0].price €
+                </button>
+                <form method="post">
+                    <div class="dropdown-menu">
+                        @foreach (var flight in dest.cheapestFlights)
+                        {
+                            <a class="dropdown-item" href="#">@flight.price</a>
+                            <input name="eleDestinazioni" type="hidden" value="@Model.eleDestinazioni" />
+                            <input name="voloscelto" type="hidden" value="@flight" />
+                            <input class="btn btn-primary" type="submit" value="cerca" />
+                        }
+                    </div>
+                </form>
+            </div>
+            <br />
+        }
+    </div>*@ 
+@foreach (var dest in Model.eleDestinazioni)
+{
+    a = 0;
+    Model.tratta = new Models.Tratta { IATA_partenza = Model.codiceAeroporto, IATA_destinazione = dest.destination };
+    <p>
         <div class="btn-group" style="width: 100%;">
-            <button class="btn btn-light btn-lg dropdown-toggle" style="width:auto" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                @dest.destination - @dest.cheapestFlights[0].price €
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample-@i.ToString()" aria-expanded="false" aria-controls="collapseExample">
+                @dest.destination - @Model.eleNomi.Where(p => p.iataCode == dest.destination).FirstOrDefault()?.name - @Model.eleNomi.Where(p => p.iataCode == dest.destination).FirstOrDefault()?.alpha2countryCode - @dest.cheapestFlights[0].price €
             </button>
-            <form method="post">
-                <div class="dropdown-menu">
-                    @foreach (var flight in dest.cheapestFlights)
-                    {
-                        <a class="dropdown-item" href="#">@flight.price</a>
-                        <input name="eleDestinazioni" type="hidden" value="@Model.eleDestinazioni" />
-                        <input name="voloscelto" type="hidden" value="@flight" />
-                        <input class="btn btn-primary" type="submit" value="cerca" />
-                    }
-                </div>
-            </form>            
         </div>
-        <br />
-    }
-</div>
+    </p>    
+    <div class="collapse" id="collapseExample-@i.ToString()">
+        <div class="card card-body">            
+            <table>
+                <thead>
+                    <tr>
+                        <td>Prezzo</td>
+                        <td>Compagnia</td>
+                        <td>N. Volo</td>
+                        <td>Andata</td>
+                        <td>Ritorno</td>
+                        <td>Scadenza offerta</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var flight in dest.cheapestFlights)
+                    {                        
+                    <tr>
+                        <td>@flight.price €</td>
+                        <td>@flight.airline</td>
+                        <td>@flight.flight_number</td>
+                        <td>@flight.departure_at</td>
+                        <td>@flight.return_at</td>
+                        <td>@flight.expires_at</td>
+                        <td>
+                            @if(a==0)
+                            {
+                            <form method="post">
+                                <a asp-page="/AggiungiPreferiti" asp-route-volo="@Json.Serialize(Model.tratta)">Aggiungi destinazione ai preferiti</a>
+                            </form>
+                            }                            
+                        </td>                            
+                    </tr>
+                        a++;
+                    }                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    i++;
+}

@@ -24,6 +24,12 @@ namespace API.Controllers
             List<CheapestDestination> eleDestinazioni = await scrapingRepository.ExtractCheapestFlights(departure);
             return eleDestinazioni;
         }
+        [HttpGet("ExtractCheapestFlightsArrival/{departure}/{arrival}")]
+        public async Task<List<CheapestDestination>> ExtractCheapestFlightsArrival(string departure, string arrival)
+        {
+            List<CheapestDestination> eleDestinazioni = await scrapingRepository.ExtractCheapestFlightsArrival(departure, arrival);
+            return eleDestinazioni;
+        }
         [HttpGet("ExtractAirlineInfo/{iata}")]
         public async Task<List<Airline>> ExtractAirlineInfo(string iata)
         {
@@ -41,6 +47,12 @@ namespace API.Controllers
         {
             string traduzione = await scrapingRepository.TranslateString(text);
             return traduzione;
+        }
+        [HttpGet("AirportName/{code}")]
+        public async Task<AirportName> AirportName(string code)
+        { 
+            AirportName dati = await scrapingRepository.AirportName(code);
+            return dati;
         }
     }
 }

@@ -19,6 +19,10 @@ namespace TheBestFlight.Service
         {
             return await httpClient.GetFromJsonAsync<List<CheapestDestination>>(@$"Scraping/ExtractCheapestFlights/{departure}");
         }
+        public async Task<List<CheapestDestination>> ExtractCheapestFlightsArrival(string departure, string arrival)
+        {
+            return await httpClient.GetFromJsonAsync<List<CheapestDestination>>(@$"Scraping/ExtractCheapestFlightsArrival/{departure}/{arrival}");
+        }
         public async Task<List<Airline>> ExtractAirlineInfo(string iata)
         {
             return await httpClient.GetFromJsonAsync<List<Airline>>(@$"Scraping/ExtractAirlineInfo/{iata}");
@@ -30,6 +34,10 @@ namespace TheBestFlight.Service
         public async Task<string> TranslateString(string text)
         {
             return await httpClient.GetStringAsync(@$"Scraping/TranslateString/{text}");
+        }
+        public async Task<AirportName> AirportName(string code)
+        {
+            return await httpClient.GetFromJsonAsync<AirportName>(@$"Scraping/AirportName/{code}");
         }
     }
 }

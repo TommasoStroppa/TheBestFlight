@@ -3,11 +3,19 @@
 @{
     ViewData["Title"] = "Home page";
 }
+<style>
+    .bg {
+        background-image: url('../bg.jpg');
+        height: 100%;
+    }
+</style>
+<body>
+    <div class="text-center bg">
+        <form method="post">
+            <h1 class="display-4">Inserisci la tua Città di partenza</h1>
+            <input asp-for="citta" />
+            <input type="submit" class="btn btn-primary" />
+        </form>
+    </div>
+</body>
 
-<div class="text-center">
-    <form method="post">
-        <h1 class="display-4">Inserisci la tua Città di partenza</h1>
-        <input asp-for="citta" />
-        <input type="submit" class="btn btn-primary" />
-    </form>          
-</div>
