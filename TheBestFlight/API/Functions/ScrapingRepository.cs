@@ -150,7 +150,7 @@ namespace API.Functions
 				Headers =
 				{
 					{ "X-RapidAPI-Host", "google-translate1.p.rapidapi.com" },
-					{ "X-RapidAPI-Key", "3d0684d35amsh068100b881d194cp1cd704jsn90bc3c996d91" },
+					{ "X-RapidAPI-Key", "9b63c8af13msh4cc009eb08fd54cp12dd1fjsnfc5de6714eeb" },
 				},
 				Content = new FormUrlEncodedContent(new Dictionary<string, string>
 				{

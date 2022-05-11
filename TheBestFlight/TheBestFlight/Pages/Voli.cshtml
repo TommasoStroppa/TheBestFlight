@@ -5,18 +5,17 @@
     int i = 0;
     int a = 0;
 }
-<style>
-    body, html {
-        height: 100%;
-        background-image: url("../images/isola.png");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-</style>
+@*<style>
+        body, html {
+            height: 100%;
+            background-image: url("../images/isola.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>*@
 @foreach (var dest in Model.eleDestinazioni)
 {
-    a = 0;
     Model.tratta = new Models.Tratta { IATA_partenza = Model.codiceAeroporto, IATA_destinazione = dest.destination };
     <p>
         <div class="btn-group" style="width: 100%;">
@@ -24,9 +23,9 @@
                 @dest.destination - @Model.eleNomi.Where(p => p.iataCode == dest.destination).FirstOrDefault()?.name - @Model.eleNomi.Where(p => p.iataCode == dest.destination).FirstOrDefault()?.alpha2countryCode - @dest.cheapestFlights[0].price €
             </button>
         </div>
-    </p>    
+    </p>
     <div class="collapse" id="collapseExample-@i.ToString()">
-        <div class="card card-body">            
+        <div class="card card-body">
             <table>
                 <thead>
                     <tr>
@@ -36,32 +35,29 @@
                         <td>Andata</td>
                         <td>Ritorno</td>
                         <td>Scadenza offerta</td>
-                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var flight in dest.cheapestFlights)
-                    {                        
-                    <tr>
-                        <td>@flight.price €</td>
-                        <td>@flight.airline</td>
-                        <td>@flight.flight_number</td>
-                        <td>@flight.departure_at</td>
-                        <td>@flight.return_at</td>
-                        <td>@flight.expires_at</td>
-                        <td>
-                            @if(a==0)
-                            {
-                            <form method="post">
-                                <a asp-page="/AggiungiPreferiti" asp-route-volo="@Json.Serialize(Model.tratta)">Aggiungi destinazione ai preferiti</a>
-                            </form>
-                            }                            
-                        </td>                            
-                    </tr>
-                        a++;
-                    }                    
+                    {
+                        <tr>
+                            <td>@flight.price €</td>
+                            <td>@flight.airline</td>
+                            <td>@flight.flight_number</td>
+                            <td>@flight.departure_at</td>
+                            <td>@flight.return_at</td>
+                            <td>@flight.expires_at</td>
+                        </tr>
+
+                    }
                 </tbody>
             </table>
+            @if (a == 0)
+            {
+                <form method="post">
+                    <a class="btn btn-dark" asp-page="/AggiungiPreferiti" asp-route-volo="@Json.Serialize(Model.tratta)">Aggiungi destinazione ai preferiti</a>
+                </form>
+            }
         </div>
     </div>
     i++;

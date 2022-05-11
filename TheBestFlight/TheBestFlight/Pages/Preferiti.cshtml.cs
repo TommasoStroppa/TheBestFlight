@@ -44,7 +44,7 @@ namespace TheBestFlight.Pages
                 }
             }
 
-            if (eleTratteUtente == null)
+            if (eleTratteUtente.Count() == 0)
             {
                 return NotFound();
             }
