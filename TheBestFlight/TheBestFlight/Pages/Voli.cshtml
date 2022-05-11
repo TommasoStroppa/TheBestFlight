@@ -5,32 +5,15 @@
     int i = 0;
     int a = 0;
 }
-
-
-
-
-@*<div class="text-center">
-        @foreach (var dest in Model.eleDestinazioni)
-        {
-            <div class="btn-group" style="width: 100%;">
-                <button class="btn btn-light btn-lg dropdown-toggle" style="width:auto" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    @dest.destination - @Model.eleNomi.Where(p => p.iataCode == dest.destination).FirstOrDefault()?.name - @Model.eleNomi.Where(p => p.iataCode == dest.destination).FirstOrDefault()?.alpha2countryCode - @dest.cheapestFlights[0].price €
-                </button>
-                <form method="post">
-                    <div class="dropdown-menu">
-                        @foreach (var flight in dest.cheapestFlights)
-                        {
-                            <a class="dropdown-item" href="#">@flight.price</a>
-                            <input name="eleDestinazioni" type="hidden" value="@Model.eleDestinazioni" />
-                            <input name="voloscelto" type="hidden" value="@flight" />
-                            <input class="btn btn-primary" type="submit" value="cerca" />
-                        }
-                    </div>
-                </form>
-            </div>
-            <br />
-        }
-    </div>*@ 
+<style>
+    body, html {
+        height: 100%;
+        background-image: url("../images/isola.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
 @foreach (var dest in Model.eleDestinazioni)
 {
     a = 0;

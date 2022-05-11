@@ -3,9 +3,25 @@
 @{
     ViewData["Title"] = "Aeroporto";
 }
+<style>
+    body, html {
+        height: 100%;
+        background-image: url("../images/aereoporto.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
 <div class="text-center">
     <form method="post">
-        <h1 class="display-4">Selezionare l'aeroporto di partenza</h1>
+        <br />
+        <br />
+        <br />
+        <h1 class="display-4" style="color: white"><i>Selezionare l'aeroporto di partenza</i></h1>
+        <br />
+        <br />
+        <br />
+        <br />
         <select asp-for="@Model.aeroporto" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             @foreach (var item in Model.eleAeroporti)
             {
@@ -16,7 +32,9 @@
         </select>
         <br />
         <br />
-        <input type="submit" class="btn btn-primary" />
+        <br />
+        <br />
+        <input type="submit" class="btn btn-danger" style="width:100px" />
     </form>
 </div>
 

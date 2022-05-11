@@ -4,17 +4,31 @@
     ViewData["Title"] = "Home page";
 }
 <style>
-    .bg {
-        background-image: url('../bg.jpg');
+    body, html {
         height: 100%;
+        background-image: url("../images/isola.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 </style>
 <body>
+    <br />
+    <br />
+    <br />
     <div class="text-center bg">
         <form method="post">
-            <h1 class="display-4">Inserisci la tua Città di partenza</h1>
-            <input asp-for="citta" />
-            <input type="submit" class="btn btn-primary" />
+            <h1 class="display-4" style="color: white"><i>Inserisci la tua Città di partenza</i></h1>
+            <br />
+            <br />
+            <br />
+            <br />
+            <input asp-for="citta" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+            <br />
+            <br />
+            <br />
+            <br />
+            <input type="submit" class="btn btn-danger" style="width:100px"/>
         </form>
     </div>
 </body>
