@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\utente\Documents\GitHub\TheBestFlight\TheBestFlight\TheBestFlight\bin\Release\net5.0\publish\</_PublishTargetUrl>
+    <History>True|2022-05-12T19:11:58.0169530Z;True|2022-05-12T20:51:40.3269668+02:00;True|2022-05-12T20:51:29.6597852+02:00;True|2022-05-12T20:49:31.1859620+02:00;True|2022-05-12T19:55:34.3665936+02:00;True|2022-05-12T19:54:04.8871604+02:00;True|2022-05-12T19:26:18.6196020+02:00;</History>
+  </PropertyGroup>
+</Project>

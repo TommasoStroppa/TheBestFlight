@@ -31,7 +31,7 @@ namespace TheBestFlight
         {
             services.AddHttpClient<IScrapingRepository, ScrapingRepository>(client =>
             {
-                client.BaseAddress = new Uri("https://localhost:44348/");
+                client.BaseAddress = new Uri("http://apithebestflight.somee.com/publish/");
             }).ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
             {
                 AllowAutoRedirect = false,
@@ -40,8 +40,8 @@ namespace TheBestFlight
 
             });
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlite(
+                    Configuration.GetConnectionString("IdentityConnection")));
 
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlite(
