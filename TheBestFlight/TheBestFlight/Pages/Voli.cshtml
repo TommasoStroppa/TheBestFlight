@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Voli";
     int i = 0;
-    int a = 0;
 }
 @*<style>
         body, html {
@@ -34,7 +33,7 @@
                         <td>N. Volo</td>
                         <td>Andata</td>
                         <td>Ritorno</td>
-                        <td>Scadenza offerta</td>
+                        <td>Data offerta</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,12 +51,12 @@
                     }
                 </tbody>
             </table>
-            @if (a == 0)
-            {
+                <br />
                 <form method="post">
-                    <a class="btn btn-dark" asp-page="/AggiungiPreferiti" asp-route-volo="@Json.Serialize(Model.tratta)">Aggiungi destinazione ai preferiti</a>
+                    <div class="col text-center"> 
+                        <a class="btn btn-dark" asp-page="/AggiungiPreferiti" asp-route-volo="@Json.Serialize(Model.tratta)">Aggiungi destinazione ai preferiti</a>
+                    </div>               
                 </form>
-            }
         </div>
     </div>
     i++;

@@ -3,16 +3,19 @@
 @{
     int i = 0;
     int conta = 0;
-    int a = 0;
 }
+@if (Model.eleTratteUtente.Count() == 0)
+{
+    <h2>Nessuna destinazione salvata</h2>
+}
+else
 @foreach (var dest in Model.eleDestinazioni)
 {
-    a = 0;
     Model.tratta = new Models.Tratta { IATA_partenza = Model.eleTratteUtente[conta].IATA_partenza, IATA_destinazione = dest.destination };
     <p>
         <div class="btn-group" style="width: 100%;">
             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample-@i.ToString()" aria-expanded="false" aria-controls="collapseExample">
-                @dest.destination - @Model.eleNomi.Where(p => p.iataCode == dest.destination).FirstOrDefault()?.name - @Model.eleNomi.Where(p => p.iataCode == dest.destination).FirstOrDefault()?.alpha2countryCode - @dest.cheapestFlights[0].price €
+                @Model.tratta.IATA_partenza - @dest.destination / @Model.eleNomi.Where(p => p.iataCode == dest.destination).FirstOrDefault()?.name - @Model.eleNomi.Where(p => p.iataCode == dest.destination).FirstOrDefault()?.alpha2countryCode - @dest.cheapestFlights[0].price €
             </button>
         </div>
     </p>
@@ -26,8 +29,7 @@
                         <td>N. Volo</td>
                         <td>Andata</td>
                         <td>Ritorno</td>
-                        <td>Scadenza offerta</td>
-                        <td></td>
+                        <td>Data offerta</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,19 +42,16 @@
                             <td>@flight.departure_at</td>
                             <td>@flight.return_at</td>
                             <td>@flight.expires_at</td>
-                            <td>
-                                @if (a == 0)
-                                {
-                                    <form method="post">
-                                        <a class="btn btn-danger" asp-page="/RimuoviPreferiti" asp-route-volo="@Json.Serialize(Model.tratta)">Rimuovi destinazione dai preferiti</a>
-                                    </form>
-                                }
-                                </td>
                         </tr>
-                        a++;
                     }
                 </tbody>
             </table>
+            <br />
+            <form method="post">
+                <div class="col text-center">
+                    <a class="btn btn-dark" asp-page="/RimuoviPreferiti" asp-route-volo="@Json.Serialize(Model.tratta)">Rimuovi destinazione dai preferiti</a>
+                </div>
+            </form>
         </div>
     </div>
     i++;

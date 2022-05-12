@@ -46,10 +46,10 @@ namespace TheBestFlight.Pages
 
             if (eleTratteUtente.Count() == 0)
             {
-                return NotFound();
+                return Page();
             }
-            
-            foreach(var item in eleTratteUtente)
+
+            foreach (var item in eleTratteUtente)
             {
                 eleDestinazioni = await scrapingRepository.ExtractCheapestFlightsArrival(item.IATA_partenza, item.IATA_destinazione);
             }
