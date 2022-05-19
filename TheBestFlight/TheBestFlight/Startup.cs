@@ -31,7 +31,8 @@ namespace TheBestFlight
         {
             services.AddHttpClient<IScrapingRepository, ScrapingRepository>(client =>
             {
-                client.BaseAddress = new Uri("http://apithebestflight.somee.com/publish/");
+                //http://apithebestflight.somee.com/publish/
+                client.BaseAddress = new Uri("https://localhost:44348/");
             }).ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
             {
                 AllowAutoRedirect = false,
